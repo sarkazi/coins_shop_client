@@ -1,0 +1,26 @@
+.main {
+  padding: 100px 0;
+  @media (max-width: 700px) {
+    & {
+      padding: 30px 0;
+    }
+  }
+  .section {
+    display: grid;
+    grid-template-columns: minmax(250px, 700px);
+    .form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      .inputFile {
+        font-size: 15px;
+      }
+      .btnBlock {
+        display: grid;
+        max-width: 700px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+      }
+    }
+  }
+}

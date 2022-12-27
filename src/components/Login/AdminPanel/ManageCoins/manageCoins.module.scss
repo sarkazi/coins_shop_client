@@ -1,0 +1,101 @@
+.block {
+  padding: 100px 0;
+  width: 100%;
+  @media (max-width: 700px) {
+    & {
+      padding: 30px 0;
+    }
+  }
+  .section {
+    display: flex;
+    flex-direction: column;
+    .inputBlock {
+      margin-bottom: 50px;
+      max-width: 500px;
+      width: 100%;
+    }
+    .selectSort {
+      margin-bottom: 50px;
+      align-self: flex-end;
+      padding-right: 20px;
+    }
+    .list {
+      margin-bottom: 15px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      @media (max-width: 700px) {
+        & {
+          grid-template-columns: 1fr;
+        }
+      }
+      .item {
+        @media (max-width: 360px) {
+          & {
+            grid-template-columns: 60px 1fr auto;
+          }
+        }
+        &:hover .imgBlock img {
+          transform: scale(1.05);
+          transition: 0.2s all ease-in-out;
+        }
+        &:not(:hover) .imgBlock img {
+          transition: 0.2s all ease-in-out;
+        }
+        .itemMainBlock {
+          padding: 13px 10px;
+          display: grid;
+          grid-template-columns: 80px 1fr auto;
+          column-gap: 20px;
+          align-items: center;
+          background-color: rgb(236, 231, 224);
+          .imgBlock {
+            img {
+              width: 100%;
+            }
+          }
+          h2 {
+          }
+          .itemBtnBlock {
+            display: flex;
+            align-items: center;
+            column-gap: 5px;
+            button {
+              padding: 5px 5px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              &:hover {
+                background-color: rgb(223, 216, 193);
+              }
+              svg {
+                width: 20px;
+              }
+            }
+          }
+        }
+        .itemViewsBlock {
+          background-color: rgb(229, 224, 211);
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          column-gap: 5px;
+          padding: 5px 10px;
+          svg {
+            width: 15px;
+          }
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .btnBlock {
+      display: grid;
+      max-width: 500px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+.main {
+  color: black;
+  min-width: 100%;
+  padding: 50px 0;
+  @media (max-width: 700px) {
+    & {
+      padding: 30px 0;
+    }
+  }
+  .homePageWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .select {
+      align-self: flex-end;
+      margin-bottom: 40px;
+      background-color: rgb(245, 245, 245);
+      padding: 5px;
+    }
+    .paginate {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      align-self: flex-start;
+      list-style-type: none;
+      .pagActiveLink {
+        background-color: #9c63e5;
+        color: white;
+      }
+      & li {
+        transition: 0.3s all ease-in-out;
+        cursor: pointer;
+      }
+      & a {
+        padding: 10px;
+      }
+      :global(.previous a):hover {
+        color: #833ae0;
+        background-color: rgb(241, 241, 241);
+      }
+      :global(.next a):hover {
+        color: #833ae0;
+        background-color: rgb(241, 241, 241);
+      }
+      :global(.next a):hover:disabled {
+        color: #833ae0;
+        background-color: unset;
+      }
+      &
+        li
+        a:hover:not(
+          :global(.next a),
+          :global(.previous a),
+          :global(.selected a)
+        ) {
+        background-color: rgb(241, 241, 241);
+        transform: scale(1.08);
+      }
+    }
+    .items {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(300px, 0.5fr));
+      row-gap: 25px;
+      justify-content: space-between;
+      column-gap: 30px;
+      margin-bottom: 60px;
+      @media (max-width: 795px) {
+        & {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}

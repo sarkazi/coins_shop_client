@@ -1,0 +1,38 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  .title {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 100%;
+    margin-bottom: 20px;
+  }
+  .btnShowAll {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin-bottom: 10px;
+    span {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 109%;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    svg {
+      transform: rotate(-90deg);
+      width: 10px;
+    }
+  }
+  .imgBlock {
+    transition: 0.2s all ease-in-out;
+    &:hover {
+      transform: scale(1.03);
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

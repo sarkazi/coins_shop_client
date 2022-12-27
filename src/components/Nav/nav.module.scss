@@ -1,0 +1,16 @@
+.nav {
+  font-size: 12px;
+  line-height: 109%;
+  color: #b1abab;
+  align-self: flex-start;
+  a {
+    font-weight: 500;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: unset;
+    }
+  }
+  span {
+    font-weight: 400;
+  }
+}

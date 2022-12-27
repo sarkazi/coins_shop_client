@@ -1,0 +1,35 @@
+.btnBubmit {
+  background-color: #833ae0;
+  color: white;
+  padding: 13px 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  &.isCart {
+    background-color: unset;
+    border: 1px solid black;
+    color: black;
+  }
+  svg {
+    display: none;
+  }
+  @media (max-width: 450px) {
+    & svg {
+      display: unset;
+      width: 20px;
+      color: white;
+    }
+    & span.onlyIcon {
+      display: none;
+    }
+  }
+
+  &:hover {
+    background-color: #6f26cf;
+    &.isCart {
+      background-color: rgb(235, 235, 235);
+    }
+  }
+}

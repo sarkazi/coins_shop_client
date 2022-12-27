@@ -1,0 +1,48 @@
+.itemSection {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 450px auto;
+  column-gap: 30px;
+  .itemSelect {
+    display: flex;
+    flex-direction: column;
+    select {
+      border: 1px solid black;
+      padding: 13px 10px;
+    }
+  }
+  .changeBlock {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    .changePriceBody {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+      .inputText {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        input {
+          border: 1px solid black;
+          padding: 13px 10px;
+          &::placeholder {
+            color: rgb(158, 158, 158);
+          }
+        }
+        span {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 109%;
+        }
+      }
+    }
+  }
+}
+
+.inputTitle {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 109%;
+  margin-bottom: 5px;
+}

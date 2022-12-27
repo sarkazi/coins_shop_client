@@ -1,0 +1,56 @@
+.title {
+  font-weight: 300;
+  font-size: 50px;
+  line-height: 59px;
+  margin-bottom: 25px;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 60px;
+  .form {
+    display: grid;
+    align-items: center;
+    width: 50%;
+    grid-template-columns: auto 120px;
+    grid-template-rows: 48px;
+    column-gap: 30px;
+    height: auto;
+    margin-bottom: 10px;
+    @media (max-width: 880px) {
+      & {
+        width: 70%;
+      }
+    }
+    @media (max-width: 666px) {
+      & {
+        width: 100%;
+        grid-template-columns: auto 80px;
+        column-gap: 15px;
+      }
+    }
+  }
+  .label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 109%;
+    margin-bottom: 5px;
+  }
+
+  .btnToggleFilter {
+    display: flex;
+    align-items: center;
+    column-gap: 9px;
+    span {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 109%;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: unset;
+      }
+    }
+  }
+}
