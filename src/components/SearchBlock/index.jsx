@@ -4,9 +4,8 @@ import Title from '../Title'
 import Input from '../Input'
 import Button from '../Button'
 import Nav from '../Nav'
-import { Link } from 'react-router-dom'
 
-const SearchBlock = ({ title, titleStyle, navStyle, nav, toggleOnClick, showFilter, previousPath, currentPath, path, onChange }) => {
+const SearchBlock = ({ titleStyle, navStyle, nav, toggleOnClick, showFilter, previousPath, currentPath, path, onChange }) => {
 
    return (
       <>

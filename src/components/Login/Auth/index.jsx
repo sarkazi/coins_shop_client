@@ -6,7 +6,6 @@ import Input from '../../Input'
 
 
 import API from '../../../api/axiosBase'
-import { useNavigate } from 'react-router-dom'
 
 const Auth = () => {
 

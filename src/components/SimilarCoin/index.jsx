@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+
 import { pathToImage } from '../../constants/pathToImage'
 import styles from './similarCoin.module.scss'
 
@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 
 const SimilarCoin = ({ frontImage, name, description, price, composition, id }) => {
 
-   const navigate = useNavigate()
 
 
    return (

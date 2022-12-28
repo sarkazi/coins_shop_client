@@ -1,5 +1,4 @@
 import styles from './input.module.scss'
-import { useForm } from 'react-hook-form'
 
 const Input = ({ placeholder, onChange, value, type = 'text', register, style, icon }) => {
 

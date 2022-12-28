@@ -13,7 +13,7 @@ import { parseLocalStorage } from '../../utils/parseLocalStorage'
 
 const Header = () => {
 
-   const { isCloseCart, setIsCloseCart } = useContext(AppContext);
+   const { setIsCloseCart } = useContext(AppContext);
 
    const { pathname } = useLocation()
 
@@ -34,6 +34,8 @@ const Header = () => {
       setIsCloseCart(true)
       fetchApiData(onCreateCart)
    }
+
+   console.log(process.env.REACT_APP_STATIC_URL)
 
    return (
       <header className={styles.header}>

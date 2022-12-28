@@ -11,7 +11,7 @@ import { parseLocalStorage } from '../../utils/parseLocalStorage'
 
 import { useParams } from 'react-router-dom'
 import { fetchApiData } from "../../api/fetchApiData"
-import { getCoinsByCat, getOneUser } from "../../api/apiUris"
+import { getCoinsByCat } from "../../api/apiUris"
 
 import { isFindCoinInCart } from "../../utils/isFindCoinInCart"
 

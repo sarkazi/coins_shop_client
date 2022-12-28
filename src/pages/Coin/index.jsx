@@ -7,9 +7,6 @@ import { useEffect, useState } from 'react'
 
 import { pathToImage } from '../../constants/pathToImage'
 
-import { useContext } from 'react'
-import { AppContext } from '../../app'
-
 import Button from '../../components/Button'
 import SimilarCoin from '../../components/SimilarCoin'
 
@@ -32,7 +29,6 @@ const features = [
 const CoinPage = () => {
 
    const [user, setUser] = useState(null)
-   const [isInCart, setIsInCart] = useState()
 
 
    const [coin, setCoin] = useState({})
