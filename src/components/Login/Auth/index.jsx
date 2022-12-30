@@ -4,11 +4,15 @@ import { useState } from 'react'
 import Button from '../../Button'
 import Input from '../../Input'
 
+import { useContext } from 'react'
+import { AppContext } from '../../../app'
+
 
 import API from '../../../api/axiosBase'
 
 const Auth = () => {
 
+   const { setIsAuthUser } = useContext(AppContext)
 
 
    const [isRegister, setIsRegister] = useState(false)
@@ -21,6 +25,8 @@ const Auth = () => {
 
 
    const onAction = async (e, uri) => {
+
+   
       try {
          e.preventDefault()
          const { data } = await API.post(`/auth/${uri}`, {
@@ -32,10 +38,9 @@ const Auth = () => {
          }
          if (uri === 'login') {
             localStorage.setItem('coins_user', JSON.stringify(data))
+            setIsAuthUser(true)
          }
-
-
-
+         setInputData({ login: '', password: '' })
       } catch (err) {
          alert(err.response.data.message)
          console.log(err)
@@ -46,14 +51,8 @@ const Auth = () => {
 
    return (
       <form className={styles.loginForm}>
-         <div className={styles.inputBody}>
-            <h3>Login</h3>
-            <Input value={inputData.login} onChange={(e) => setInputData({ ...inputData, login: e.target.value })} placeholder='Введите логин' />
-         </div>
-         <div className={styles.inputBody}>
-            <h3>Password</h3>
-            <Input value={inputData.password} onChange={(e) => setInputData({ ...inputData, password: e.target.value })} placeholder='Введите пароль' />
-         </div>
+         <Input value={inputData.login} onChange={(e) => setInputData({ ...inputData, login: e.target.value })} placeholder='Введите логин' description='Login' />
+         <Input type='password' value={inputData.password} onChange={(e) => setInputData({ ...inputData, password: e.target.value })} placeholder='Введите пароль' description='Password' />
          <div className={styles.btnBlock}>
             <Button onClick={(e) => isRegister ? onAction(e, 'register') : onAction(e, 'login')} type='submit' text={isRegister ? 'Register' : 'Sign in'} />
             {isRegister ? <Button onClick={(e) => onSwitch(e, 'login')} text='Sign in' style={{ backgroundColor: 'unset', color: 'black' }} /> : <Button onClick={(e) => onSwitch(e, 'register')} style={{ backgroundColor: 'unset', color: 'black' }} text='Register' />}

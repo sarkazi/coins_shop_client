@@ -11,10 +11,12 @@ export const AppContext = createContext();
 function App() {
 
    const [isCloseCart, setIsCloseCart] = useState(false)
+   const [isAuthUser, setIsAuthUser] = useState(false)
+   const [inputData, setInputData] = useState('')
 
 
    return (
-      <AppContext.Provider value={{ isCloseCart, setIsCloseCart }}>
+      <AppContext.Provider value={{ isCloseCart, setIsCloseCart, isAuthUser, setIsAuthUser, inputData, setInputData }}>
          <div style={{ position: 'relative' }}>
             <Header />
             <Main />

@@ -32,6 +32,7 @@ const ManageCategory = () => {
 
    const onDeleteCategory = async (id) => {
       await deleteCategory(id)
+      setCategories(categories.filter(cat => cat.id !== id))
    }
 
    const onGetCategories = async () => {
@@ -72,7 +73,7 @@ const ManageCategory = () => {
             </ul>
             <div className={styles.btnBlock}>
                <Button onClick={() => fetchApiData(onAddCategory)} text='Add new category' />
-               <Button onClick={() => navigate(-1)} text='Go back' />
+               <Button onClick={() => navigate('/admin-panel')} text='Go back' />
             </div>
          </Layout>
       </main>

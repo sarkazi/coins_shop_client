@@ -5,6 +5,7 @@ import Select from '../../../../Select'
 import Button from '../../../../Button'
 import Title from '../../../../Title'
 import Nav from '../../../../Nav'
+import FileInput from '../../../../FileInput'
 
 import { fetchApiData } from '../../../../../api/fetchApiData'
 
@@ -19,7 +20,8 @@ import { checkValidUser } from '../../../../../utils/checkValidUser'
 
 const EditCoins = () => {
 
-   const { register, handleSubmit, watch } = useForm();
+
+   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
    const { id } = useParams()
    const navigate = useNavigate()
@@ -42,6 +44,7 @@ const EditCoins = () => {
 
    const onUpdateCoin = async (data) => {
 
+
       const formData = new FormData()
       formData.append('category', data.category)
       watch('frontImage').length && formData.append('frontImage', data.frontImage[0])
@@ -61,6 +64,7 @@ const EditCoins = () => {
 
 
 
+
    useEffect(() => {
       !isValidUser && navigate('/')
       fetchApiData(onGetCategories)
@@ -71,10 +75,11 @@ const EditCoins = () => {
    }, [])
 
 
-   const onSubmit = handleSubmit(async (data) => {
+   const onSubmit = handleSubmit((data) => {
       fetchApiData(onUpdateCoin(data))
    })
 
+   console.log(errors)
 
    return (
       <main className={styles.main}>
@@ -83,22 +88,19 @@ const EditCoins = () => {
                <Title text='Admin panel' />
                <Nav currentPath='edit-coin' previousPath='Manage coins' navStyle={{ marginBottom: '40px' }} path='/admin-panel/coin-manage' />
                <form onSubmit={onSubmit} className={styles.form} encType='multipart/form-data'>
-                  <Select value={currentCoin?.category} register={{ ...register('category', { valueAsNumber: true, required: true }) }} arr={categories} />
-                  <Input value={currentCoin?.name} register={{ ...register('name') }} placeholder='Name' />
-                  <Input value={currentCoin?.description} register={{ ...register('description') }} placeholder='Description' />
-                  <Input value={currentCoin?.issuingCountry} register={{ ...register('issuingCountry') }} placeholder='Issuing country' />
-                  <Input value={currentCoin?.composition} register={{ ...register('composition') }} placeholder='Composition' />
-                  <Input value={currentCoin?.quality} register={{ ...register('quality') }} placeholder='Quality' />
-                  <Input value={currentCoin?.denomination} register={{ ...register('denomination') }} placeholder='Denomination' />
-                  <Input value={currentCoin?.year} register={{ ...register('year', { valueAsNumber: true }) }} placeholder='Year' type='number' />
-                  <Input value={currentCoin?.weight} register={{ ...register('weight') }} placeholder='Weight' />
-                  <Input value={currentCoin?.price} register={{ ...register('price', { valueAsNumber: true }) }} type='number' placeholder='Price' />
-                  <div>
-                     <input className={styles.inputFile} {...register('frontImage')} type='file' />
-                  </div>
-                  <div>
-                     <input className={styles.inputFile} {...register('backImage')} type='file' />
-                  </div>
+                  <Select description='Category' register={{ ...register('category', { valueAsNumber: true, required: { value: 12, message: 'fjjfhdjhfhjf' } }) }} arr={categories} />
+                  <Input description='Name' onChange={(e) => setCurrentCoin(currentCoin?.name)} value={currentCoin?.name} register={{ ...register('name') }} placeholder='Name' />
+                  <Input description='Description' onChange={(e) => setCurrentCoin(currentCoin?.description)} value={currentCoin?.description} register={{ ...register('description') }} placeholder='Description' />
+                  <Input description='issuingCountry' onChange={(e) => setCurrentCoin(currentCoin?.issuingCountry)} value={currentCoin?.issuingCountry} register={{ ...register('issuingCountry') }} placeholder='Issuing country' />
+                  <Input description='Composition' onChange={(e) => setCurrentCoin(currentCoin?.composition)} value={currentCoin?.composition} register={{ ...register('composition') }} placeholder='Composition' />
+                  <Input description='Quality' onChange={(e) => setCurrentCoin(currentCoin?.quality)} value={currentCoin?.quality} register={{ ...register('quality') }} placeholder='Quality' />
+                  <Input description='Denomination' onChange={(e) => setCurrentCoin(currentCoin?.denomination)} value={currentCoin?.denomination} register={{ ...register('denomination') }} placeholder='Denomination' />
+                  <Input description='Year' onChange={(e) => setCurrentCoin(currentCoin?.year)} value={currentCoin?.year} register={{ ...register('year', { valueAsNumber: true }) }} placeholder='Year' type='number' />
+                  <Input description='Weight' onChange={(e) => setCurrentCoin(currentCoin?.weight)} value={currentCoin?.weight} register={{ ...register('weight') }} placeholder='Weight' />
+                  <Input description='Price' onChange={(e) => setCurrentCoin(currentCoin?.price)} value={currentCoin?.price} register={{ ...register('price', { valueAsNumber: true }) }} type='number' placeholder='Price' />
+                  <FileInput description='Obverse (front side)' register={{ ...register('frontImage') }} />
+                  <FileInput description='Reverse (back side)' register={{ ...register('backImage') }} />
+                  {errors.category && <span className={styles.errorHandle}>Поле "Категория не может быть пустым!"</span>}
                   <div className={styles.btnBlock}>
                      <Button type='submit' text='Добавить' />
                      <Button onClick={() => navigate(-1)} text='Назад' />

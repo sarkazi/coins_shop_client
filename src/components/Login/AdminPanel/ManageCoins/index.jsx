@@ -50,10 +50,11 @@ const ManageCoins = () => {
 
    const onDeleteCoin = async (id) => {
       await deleteCoin(id)
+      setCoins(coins.filter(coin => coin.id !== id))
    }
 
    const onGetCoins = async () => {
-      const { data } = await getAllCoins(selectData)
+      const { data } = await getAllCoins(selectData, null)
       setCoins(data)
    }
 
@@ -74,9 +75,7 @@ const ManageCoins = () => {
             <section className={styles.section}>
                <Title text='AdminPanel' />
                <Nav currentPath='manage-coins' previousPath='Admin panel' navStyle={{ marginBottom: '40px' }} path='/admin-panel' />
-               <div className={styles.inputBlock}>
-                  <Input onChange={(e) => onInputData(e.target.value)} icon placeholder='Поиск' />
-               </div>
+               <Input bodyStyle={{ marginBottom: '50px', maxWidth: '500px', width: '100%' }} description='Search' onChange={(e) => onInputData(e.target.value)} icon placeholder='Поиск' />
                <select onChange={(e) => setSelectData(e.target.value)} className={styles.selectSort}>
                   {selectOptions.map(el => (
                      <option value={el.query} key={el.value}>{el.value}</option>
@@ -122,7 +121,7 @@ const ManageCoins = () => {
                </ul>
                <div className={styles.btnBlock}>
                   <Button onClick={() => fetchApiData(onAddCoin)} text='Add new coin' />
-                  <Button onClick={() => navigate(-1)} text='Go back' />
+                  <Button onClick={() => navigate('/admin-panel')} text='Go back' />
                </div>
             </section>
 

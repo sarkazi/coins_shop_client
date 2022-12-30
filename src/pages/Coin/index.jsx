@@ -60,17 +60,14 @@ const CoinPage = () => {
       setUser(data)
    }
 
-
-
    useEffect(() => {
       fetchApiData(onGetCoin)
-      fetchApiData(onGetCurrentUser)
-      isFindCoinInCart(user, id)
+      fetchApiData(onGetSimilarCoins)
    }, [id])
 
    useEffect(() => {
-      fetchApiData(onGetSimilarCoins)
-   }, [id])
+      fetchApiData(onGetCurrentUser)
+   }, [id, user])
 
 
    const onPutCoinInCart = async () => {
@@ -114,21 +111,25 @@ const CoinPage = () => {
                      </div>
 
                      <table className={styles.table}>
-                        <tr className={styles.tableCont}>
-                           {features?.map((el, index) => (
-                              <th style={index % 2 === 0 ? { backgroundColor: '#fff' } : { backgroundColor: 'rgba(196, 196, 196, 0.5)' }} key={el}>{el}</th>
-                           ))}
-                        </tr>
-                        <tr className={styles.tableCont}>
-                           {characteristics?.map((el, index) => (
-                              <th style={index % 2 === 0 ? { backgroundColor: '#fff' } : { backgroundColor: 'rgba(196, 196, 196, 0.5)' }} key={el}>{el}</th>
-                           ))}
-                        </tr>
+                        <tbody>
+                           <tr className={styles.tableCont}>
+                              {features?.map((el, index) => (
+                                 <th style={index % 2 === 0 ? { backgroundColor: '#fff' } : { backgroundColor: 'rgba(196, 196, 196, 0.5)' }} key={el}>{el}</th>
+                              ))}
+                           </tr>
+                        </tbody>
+                        <tbody>
+                           <tr className={styles.tableCont}>
+                              {characteristics?.map((el, index) => (
+                                 <th style={index % 2 === 0 ? { backgroundColor: '#fff' } : { backgroundColor: 'rgba(196, 196, 196, 0.5)' }} key={el}>{el}</th>
+                              ))}
+                           </tr>
+                        </tbody>
                      </table>
                      {isValidUser && <Button onClick={isFindCoinInCart(user, id) ? onDeleteInCart : onPutCoinInCart} style={{ alignSelf: 'flex-start', height: 'auto', marginBottom: '30px' }} text={isFindCoinInCart(user, id) ? 'Убрать из корзины' : 'В корзину'} isCartStyle={isFindCoinInCart(user, id)} />}
 
                      <div className={styles.helpBlock}></div>
-                     <button onClick={() => navigate(-1)} className={styles.link}>Back to the list</button>
+                     <button onClick={() => navigate(`/coins/${coin?.category?.id}`)} className={styles.link}>Back to the list</button>
                   </div>
                </section>
                <section className={styles.similarBlock}>

@@ -11,7 +11,7 @@ import { pathToImage } from '../../../constants/pathToImage'
 
 
 
-const CoinCart = ({ name, frontImage, id, price }) => {
+const CoinCart = ({ name, frontImage, id, price, setCoins, coins }) => {
 
    const currentUser = parseLocalStorage()
 
@@ -24,6 +24,7 @@ const CoinCart = ({ name, frontImage, id, price }) => {
 
    const onDeleteCoinFromCart = async () => {
       await deleteCoinFromCart(data)
+      setCoins(coins.filter(coin => coin.id !== id))
    }
 
 

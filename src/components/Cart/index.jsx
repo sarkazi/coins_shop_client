@@ -17,6 +17,7 @@ const Cart = () => {
 
    const { setIsCloseCart } = useContext(AppContext);
    const [coins, setCoins] = useState([])
+   const [totalPrice, setTotalPrice] = useState([])
 
    const currentUser = parseLocalStorage()
 
@@ -32,18 +33,17 @@ const Cart = () => {
    }
 
 
+
    useEffect(() => {
       fetchApiData(onGetCurrentUser)
       fetchApiData(onGetCoinsByCart)
    }, [])
 
 
-   const setTotalPrice = () => {
-      if (user) {
-         const totalPrice = user?.cart[0]?.coins?.reduce((acc, obj) => { return acc + obj.price }, 0)
-         return totalPrice
-      }
-   }
+   useEffect(() => {
+      setTotalPrice(coins?.reduce((acc, obj) => { return acc + obj.price }, 0))
+   }, [coins])
+
 
 
    return (
@@ -57,13 +57,13 @@ const Cart = () => {
             </div>
             <ul className={styles.list}>
                {coins?.map(coin => (
-                  <CoinCart {...coin} key={coin.id} />
+                  <CoinCart setCoins={setCoins} coins={coins} {...coin} key={coin.id} />
                ))}
             </ul>
             <div className={styles.downBlock}>
                <div className={styles.priceBlock}>
                   <h3>Общая цена покупки:</h3>
-                  <span>{setTotalPrice()} $</span>
+                  <span>{totalPrice} $</span>
                </div>
                <Button style={{ width: '100%' }} text='Оформить заказ' />
             </div>

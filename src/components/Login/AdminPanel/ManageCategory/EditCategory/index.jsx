@@ -10,6 +10,7 @@ import Layout from '../../../../Layout'
 import Title from '../../../../Title'
 import Nav from '../../../../Nav'
 import Select from '../../../../Select'
+import FileInput from '../../../../FileInput'
 
 import { useForm } from 'react-hook-form'
 
@@ -38,10 +39,9 @@ const EditCategory = () => {
 
    const onUpdateCategory = async (data) => {
 
-      console.log(data, 787878)
 
       const formData = new FormData
-      watch('name') && formData.append('name', data.name)
+      watch('name') !== 'true' && formData.append('name', data.name)
       watch('description') && formData.append('description', data.description)
       watch('imageUrl').length && formData.append('imageUrl', data.imageUrl[0])
       await updateCategory(id, formData)
@@ -67,9 +67,13 @@ const EditCategory = () => {
                <Title text='Admin panel' />
                <Nav currentPath='edit-category' previousPath='Manage category' navStyle={{ marginBottom: '40px' }} path='/admin-panel/category-manage' />
                <form onSubmit={onSubmit} className={styles.form}>
-                  <Select register={{ ...register('name', { required: true }) }} arr={typesCategory} value={currentCategory} />
-                  <textarea {...register('description')} placeholder='Введите описание' className={styles.textArea} name="" id="" cols="30" rows="10"></textarea>
-                  <input {...register('imageUrl')} className={styles.inputFile} type="file" />
+                  <Select description='Category' register={{ ...register('name', { required: true }) }} arr={typesCategory} />
+                  <div className={styles.textAreaBlock}>
+                     <h3>Description</h3>
+                     <textarea {...register('description')} placeholder='Введите описание' className={styles.textArea}></textarea>
+                  </div>
+
+                  <FileInput description='Cover' register={{ ...register('imageUrl') }} />
                   <div className={styles.btnBlock}>
                      <Button type='submit' text='Добавить' />
                      <Button onClick={() => navigate(-1)} text='Назад' />

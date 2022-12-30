@@ -9,6 +9,7 @@ import EditCategory from '../Login/AdminPanel/ManageCategory/EditCategory'
 import ManageCoins from '../Login/AdminPanel/ManageCoins'
 import EditCoins from '../Login/AdminPanel/ManageCoins/EditCoins'
 import Cart from '../Cart'
+import AdvancedFilter from '../../pages/AdvancedFilter'
 
 import { useContext } from 'react';
 import { AppContext } from '../../app';
@@ -28,6 +29,7 @@ const Main = () => {
             <Route exact path='/admin-panel/category-manage/:id' element={<EditCategory />}></Route>
             <Route exact path='/admin-panel/coin-manage' element={<ManageCoins />}></Route>
             <Route exact path='/admin-panel/coin-manage/:id' element={<EditCoins />}></Route>
+            <Route exact path='/advanced-filter' element={<AdvancedFilter />}></Route>
          </Routes>
          {isCloseCart && <Cart />}
 

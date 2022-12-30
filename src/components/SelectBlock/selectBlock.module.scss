@@ -1,28 +1,36 @@
 .itemSection {
   display: grid;
   align-items: center;
-  grid-template-columns: 450px auto;
+  grid-template-columns: minmax(0, 450px) auto;
   column-gap: 30px;
-  .itemSelect {
-    display: flex;
-    flex-direction: column;
-    select {
-      border: 1px solid black;
-      padding: 13px 10px;
+  @media (max-width: 630px) {
+    & {
+      grid-template-columns: 1fr;
+      row-gap: 10px;
+      .changeBlock.hide {
+        display: none;
+      }
     }
   }
   .changeBlock {
     display: flex;
-    height: 100%;
     flex-direction: column;
+    gap: 4px;
+    height: 100%;
+    &.hide {
+      visibility: hidden;
+    }
     .changePriceBody {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
       column-gap: 16px;
       .inputText {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto minmax(0, 300px);
         align-items: center;
         column-gap: 10px;
+        //  width: 100%;
         input {
           border: 1px solid black;
           padding: 13px 10px;
