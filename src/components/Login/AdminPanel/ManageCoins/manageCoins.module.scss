@@ -74,18 +74,25 @@
             }
           }
         }
-        .itemViewsBlock {
+        .itemDownBlock {
           background-color: rgb(229, 224, 211);
+          justify-content: space-between;
           display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          column-gap: 5px;
           padding: 5px 10px;
-          svg {
-            width: 15px;
+          p {
+            font-size: 14px;
+            color: rgb(134, 128, 115);
           }
-          span {
-            font-size: 12px;
+          .viewBlock {
+            display: flex;
+            align-items: center;
+            column-gap: 5px;
+            svg {
+              width: 15px;
+            }
+            span {
+              font-size: 12px;
+            }
           }
         }
       }

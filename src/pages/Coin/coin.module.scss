@@ -68,12 +68,14 @@
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
+          position: relative;
           .textBlock {
             h1 {
               font-weight: 700;
               font-size: 28px;
               line-height: 33px;
               margin-bottom: 20px;
+              display: inline-block;
             }
             p {
               font-weight: 400;
@@ -86,6 +88,9 @@
             display: flex;
             align-items: center;
             column-gap: 5px;
+            position: absolute;
+            top: 0;
+            right: 0;
             svg {
               width: 15px;
               color: gray;
