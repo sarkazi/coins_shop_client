@@ -37,9 +37,9 @@ const AdvancedFilter = () => {
          <Layout>
             <div className={styles.wrapperAdvancedFilterPage}>
                <Nav path={'/'} currentPath={'advancedFilter'} previousPath='Homepage' navStyle={{ marginBottom: '50px' }} />
-               {coins.length ? <section className={styles.items}>
-                  {coins.map(coin => (
-                     <CoinItem {...coin} key={coin.name} />
+               {coins?.length ? <section className={styles.items}>
+                  {coins?.map(coin => (
+                     <CoinItem {...coin} key={coin?.name} />
                   ))}
                </section>
 
