@@ -126,14 +126,14 @@ const CoinPage = () => {
                            </tr>
                         </tbody>
                      </table>
-                     {isValidUser && <Button onClick={isFindCoinInCart(user, id) ? onDeleteInCart : onPutCoinInCart} style={{ alignSelf: 'flex-start', height: 'auto', marginBottom: '30px' }} text={isFindCoinInCart(user, id) ? 'Убрать из корзины' : 'В корзину'} isCartStyle={isFindCoinInCart(user, id)} />}
+                     {isValidUser && <Button onClick={isFindCoinInCart(user, id) ? onDeleteInCart : onPutCoinInCart} style={{ alignSelf: 'flex-start', height: 'auto', marginBottom: '30px' }} text={isFindCoinInCart(user, id) ? 'Remove from the cart' : 'Add to cart'} isCartStyle={isFindCoinInCart(user, id)} />}
 
                      <div className={styles.helpBlock}></div>
                      <button onClick={() => navigate(`/coins/${coin?.category?.id}`)} className={styles.link}>Back to the list</button>
                   </div>
                </section>
                <section className={styles.similarBlock}>
-                  <h2>Похожие монеты:</h2>
+                  <h2>Similar Coins:</h2>
                   <ul className={styles.similarList}>
                      {similarCoins?.map((coin) => (
                         <SimilarCoin {...coin} key={coin.id} />

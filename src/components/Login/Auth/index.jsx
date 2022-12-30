@@ -21,12 +21,13 @@ const Auth = () => {
    const onSwitch = (e, action) => {
       e.preventDefault()
       setIsRegister(action === 'register' ? true : false)
+      setInputData({ login: '', password: '' })
    }
 
 
    const onAction = async (e, uri) => {
 
-   
+
       try {
          e.preventDefault()
          const { data } = await API.post(`/auth/${uri}`, {
@@ -51,8 +52,8 @@ const Auth = () => {
 
    return (
       <form className={styles.loginForm}>
-         <Input value={inputData.login} onChange={(e) => setInputData({ ...inputData, login: e.target.value })} placeholder='Введите логин' description='Login' />
-         <Input type='password' value={inputData.password} onChange={(e) => setInputData({ ...inputData, password: e.target.value })} placeholder='Введите пароль' description='Password' />
+         <Input value={inputData.login} onChange={(e) => setInputData({ ...inputData, login: e.target.value })} placeholder='Login' description='Login' />
+         <Input type='password' value={inputData.password} onChange={(e) => setInputData({ ...inputData, password: e.target.value })} placeholder='Password' description='Password' />
          <div className={styles.btnBlock}>
             <Button onClick={(e) => isRegister ? onAction(e, 'register') : onAction(e, 'login')} type='submit' text={isRegister ? 'Register' : 'Sign in'} />
             {isRegister ? <Button onClick={(e) => onSwitch(e, 'login')} text='Sign in' style={{ backgroundColor: 'unset', color: 'black' }} /> : <Button onClick={(e) => onSwitch(e, 'register')} style={{ backgroundColor: 'unset', color: 'black' }} text='Register' />}

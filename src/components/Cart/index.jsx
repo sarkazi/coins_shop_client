@@ -50,9 +50,9 @@ const Cart = () => {
       <section className={styles.cart}>
          <div className={styles.cartWrapper}>
             <div className={styles.titleBlock}>
-               <Title text='Корзина' />
+               <Title text='Cart' />
                <button onClick={() => setIsCloseCart(false)} className={styles.btnClose}>
-                  Выйти
+                  Exit
                </button>
             </div>
             <ul className={styles.list}>
@@ -62,10 +62,10 @@ const Cart = () => {
             </ul>
             <div className={styles.downBlock}>
                <div className={styles.priceBlock}>
-                  <h3>Общая цена покупки:</h3>
+                  <h3>Total purchase price:</h3>
                   <span>{totalPrice} $</span>
                </div>
-               <Button style={{ width: '100%' }} text='Оформить заказ' />
+               <Button style={{ width: '100%' }} text='Place an order' />
             </div>
          </div>
       </section>

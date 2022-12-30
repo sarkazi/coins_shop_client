@@ -25,7 +25,7 @@ const SimilarCoin = ({ frontImage, name, description, price, composition, id }) 
                <span>{price}</span>
             </div>
          </div>
-         <Link to={`/coin/${id}`} className={styles.button}>Подробнее</Link>
+         <Link to={`/coin/${id}`} className={styles.button}>More detailed</Link>
       </li>
    )
 }

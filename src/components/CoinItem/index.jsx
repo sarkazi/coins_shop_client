@@ -25,7 +25,7 @@ const CoinItem = ({ name, description, frontImage, id }) => {
          <div className={styles.textBlock}>
             <Link to={`/coin/${id}`}>{name}</Link>
             <p>{description}</p>
-            {isValidUser && <Button onClick={() => navigate(`/coin/${id}`)} onlyIcon text='Подробнее' />}
+            {isValidUser && <Button onClick={() => navigate(`/coin/${id}`)} onlyIcon text='More detailed' />}
 
          </div>
       </div>

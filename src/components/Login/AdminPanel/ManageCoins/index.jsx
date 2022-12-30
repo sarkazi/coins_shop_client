@@ -21,11 +21,11 @@ import { getAllCoins, createCoin, deleteCoin } from '../../../../api/apiUris'
 
 const selectOptions = [
    {
-      value: 'По возрастанию (просмотры)',
+      value: 'Ascending (views)',
       query: 'ASC'
    },
    {
-      value: 'По убыванию (просмотры)',
+      value: 'Descending (views)',
       query: 'DESC'
    },
 ]
@@ -75,7 +75,7 @@ const ManageCoins = () => {
             <section className={styles.section}>
                <Title text='AdminPanel' />
                <Nav currentPath='manage-coins' previousPath='Admin panel' navStyle={{ marginBottom: '40px' }} path='/admin-panel' />
-               <Input bodyStyle={{ marginBottom: '50px', maxWidth: '500px', width: '100%' }} description='Search' onChange={(e) => onInputData(e.target.value)} icon placeholder='Поиск' />
+               <Input bodyStyle={{ marginBottom: '50px', maxWidth: '500px', width: '100%' }} description='Search' onChange={(e) => onInputData(e.target.value)} icon placeholder='Search' />
                <select onChange={(e) => setSelectData(e.target.value)} className={styles.selectSort}>
                   {selectOptions.map(el => (
                      <option value={el.query} key={el.value}>{el.value}</option>

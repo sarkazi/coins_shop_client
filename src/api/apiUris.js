@@ -19,9 +19,9 @@ export const getAllCoins = (query, searchTerm) => {
       params: {
          ...(query ? { sort: query } : {}),
          ...(searchTerm && searchTerm.mainInfo ? { mainInfo: encodeURIComponent(searchTerm.mainInfo) } : {}),
-         ...(searchTerm && searchTerm.country && searchTerm.country !== "Выберите значение" ? { country: encodeURIComponent(searchTerm.country) } : {}),
-         ...(searchTerm && searchTerm.metal && searchTerm.metal !== "Выберите значение" ? { metal: encodeURIComponent(searchTerm.metal) } : {}),
-         ...(searchTerm && searchTerm.quality && searchTerm.quality !== "Выберите значение" ? { quality: encodeURIComponent(searchTerm.quality) } : {}),
+         ...(searchTerm && searchTerm.country && searchTerm.country !== "Select a value" ? { country: encodeURIComponent(searchTerm.country) } : {}),
+         ...(searchTerm && searchTerm.metal && searchTerm.metal !== "Select a value" ? { metal: encodeURIComponent(searchTerm.metal) } : {}),
+         ...(searchTerm && searchTerm.quality && searchTerm.quality !== "Select a value" ? { quality: encodeURIComponent(searchTerm.quality) } : {}),
          ...(searchTerm && searchTerm.priceFrom ? { priceFrom: encodeURIComponent(searchTerm.priceFrom) } : {}),
          ...(searchTerm && searchTerm.priceTo ? { priceTo: encodeURIComponent(searchTerm.priceTo) } : {}),
          ...(searchTerm && searchTerm.yearFrom ? { yearFrom: encodeURIComponent(searchTerm.yearFrom) } : {}),

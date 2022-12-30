@@ -18,7 +18,7 @@ import { fetchApiData } from '../../../../../api/fetchApiData'
 import { getOneCategory, updateCategory } from '../../../../../api/apiUris'
 import { checkValidUser } from '../../../../../utils/checkValidUser'
 
-const typesCategory = ['Памятные', 'Инвестиционные', 'Эксклюзивные']
+const typesCategory = ['Memorable Coins', 'Investment coins', 'Exclusive coins']
 
 const EditCategory = () => {
 
@@ -70,13 +70,13 @@ const EditCategory = () => {
                   <Select description='Category' register={{ ...register('name', { required: true }) }} arr={typesCategory} />
                   <div className={styles.textAreaBlock}>
                      <h3>Description</h3>
-                     <textarea {...register('description')} placeholder='Введите описание' className={styles.textArea}></textarea>
+                     <textarea {...register('description')} placeholder='Enter a description' className={styles.textArea}></textarea>
                   </div>
 
                   <FileInput description='Cover' register={{ ...register('imageUrl') }} />
                   <div className={styles.btnBlock}>
-                     <Button type='submit' text='Добавить' />
-                     <Button onClick={() => navigate(-1)} text='Назад' />
+                     <Button type='submit' text='Add a category' />
+                     <Button onClick={() => navigate(-1)} text='Go back' />
                   </div>
                </form>
             </section>

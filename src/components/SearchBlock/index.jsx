@@ -44,7 +44,7 @@ const SearchBlock = ({ titleStyle, navStyle, nav, toggleOnClick, showFilter, pre
 
          <form onSubmit={onSubmit} className={styles.inputSection}>
             <div className={styles.form}>
-               <Input register={{ ...register('mainInfo') }} onChange={(e) => onChange(e.target.value)} description='Input field' icon placeholder='Поиск' />
+               <Input register={{ ...register('mainInfo') }} onChange={(e) => onChange(e.target.value)} description='Input field' icon placeholder='Search' />
                <Button type='submit' disabled={!inputData && !watch('mainInfo') && !watch('country') && !watch('quality') && !watch('metal') && !watch('priceFrom') && !watch('priceTo') && !watch('yearFrom') && !watch('yearTo')} />
             </div>
             <button type='button' onClick={toggleOnClick} className={styles.btnToggleFilter}>

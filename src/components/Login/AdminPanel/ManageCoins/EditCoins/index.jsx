@@ -102,8 +102,8 @@ const EditCoins = () => {
                   <FileInput description='Reverse (back side)' register={{ ...register('backImage') }} />
                   {errors.category && <span className={styles.errorHandle}>Поле "Категория не может быть пустым!"</span>}
                   <div className={styles.btnBlock}>
-                     <Button type='submit' text='Добавить' />
-                     <Button onClick={() => navigate(-1)} text='Назад' />
+                     <Button type='submit' text='Add a coin' />
+                     <Button onClick={() => navigate(-1)} text='Go back' />
                   </div>
                </form>
 

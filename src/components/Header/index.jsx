@@ -3,7 +3,7 @@ import styles from './header.module.scss'
 import { Link, useLocation } from 'react-router-dom'
 import { checkValidUser } from '../../utils/checkValidUser'
 
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 import { useContext } from 'react'
 import { AppContext } from '../../app'
@@ -27,9 +27,11 @@ const Header = () => {
 
 
 
+
    const onSignOut = (e) => {
       e.preventDefault()
       localStorage.removeItem('coins_user')
+      window.location.reload()
    }
 
    const onCreateCart = async () => {
