@@ -41,7 +41,7 @@ const CoinsPage = () => {
 
    const onGetCoinsByCat = async () => {
       const { data } = await getCoinsByCat(id, currentOnPage, (currentPage - 1) * +currentOnPage)
-      setCoins(data && data)
+      setCoins(data)
    }
 
 
@@ -75,14 +75,14 @@ const CoinsPage = () => {
             <div className={styles.homePageWrapper}>
 
                <SearchBlock onChange={onChangeInput} path='/' currentPath='Lists of the coins' previousPath='Homepage' showFilter={showFilter} toggleOnClick={(e) => { e.preventDefault(); setShowFilter(!showFilter) }} nav navStyle={{ marginBottom: '40px' }} titleStyle={{ marginBottom: 0 }} title='List of the coins' inputData={inputData} />
-               {!showFilter && coins.length && <select onChange={(e) => onChangeNumber(e.target.value)} value={currentOnPage} className={styles.select}>
-                  {countOnPage.map(item => (
+               {!showFilter && coins?.length && <select onChange={(e) => onChangeNumber(e.target.value)} value={currentOnPage} className={styles.select}>
+                  {countOnPage?.map(item => (
                      <option key={item} defaultValue={item[0]}>{item}</option>
                   ))}
                </select>}
                {!showFilter && <section className={styles.items}>
-                  {coins[0] && coins[0].filter(el => searchIncludes(el, inputData)).map(coin => (
-                     <CoinItem {...coin} key={coin.name} />
+                  {coins[0] && coins[0]?.filter(el => searchIncludes(el, inputData)).map(coin => (
+                     <CoinItem {...coin} key={coin?.name} />
                   ))}
                </section>}
                {!showFilter && <ReactPaginate activeLinkClassName={styles.pagActiveLink} onPageChange={(e) => onPageChange(e.selected + 1)} previousLabel="<" nextLabel=">" breakLabel="..." pageCount={Math.ceil(coins[1] / +currentOnPage)} className={styles.paginate} />}
